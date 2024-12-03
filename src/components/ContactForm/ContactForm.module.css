@@ -1,0 +1,47 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+  border: 1px solid grey;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.formDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 360px;
+}
+
+.title {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.inputs {
+  border-radius: 6px;
+  padding: 4px;
+  padding-left: 10px;
+  outline: none;
+  width: 95%;
+  border: 1px solid lightgrey;
+}
+
+.addBtn {
+  margin: 0 auto;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.error {
+  color: red;
+  font-size: 15px;
+}
