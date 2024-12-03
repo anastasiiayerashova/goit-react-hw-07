@@ -2,12 +2,17 @@ import s from './SearchBox.module.css';
 import { useId } from 'react';
 import { FiSearch } from "react-icons/fi";
 import { useDispatch } from 'react-redux';
+import { changeFilter } from '../../redux/filtersSlice';
 
 
 export default function SearchBox() {
     const findId = useId();
 
     const dispatch = useDispatch()
+
+    const handleChangeFilters = (e) => {
+        dispatch(changeFilter(e.target.value))
+    }
 
     
     

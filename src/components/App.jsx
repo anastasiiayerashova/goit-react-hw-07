@@ -1,13 +1,29 @@
+import { useEffect } from 'react'
 import './App.css'
 import ContactForm from './ContactForm/ContactForm'
 import ContactList from './ContactList/ContactList'
 import SearchBox from './SearchBox/SearchBox'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchContacts } from '../redux/contactsOps'
+import { selectLoading, selectError } from '../redux/contactsSlice'
+import Loader from './Loader/Loader'
 
 export default function App() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchContacts())
+  }, [dispatch])
+
+  const loading = useSelector(selectLoading)
+  const error = useSelector(selectError)
+
   return (
     <div className='mainWrapper'>
       <ContactForm />
       <SearchBox />
+      {loading && !error && <Loader/>}
+      {error && <p>Something went wrong...</p>}
       <ContactList/>
    </div>
  )

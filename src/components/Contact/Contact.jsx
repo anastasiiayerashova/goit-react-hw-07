@@ -5,11 +5,14 @@ import { LuMinus } from "react-icons/lu";
 
 
 import { useDispatch } from 'react-redux';
+import { deleteContact } from '../../redux/contactsOps';
 
 export default function Contact({...item}) {
     const dispatch = useDispatch()
 
-    
+    const handleDeleteContact = () => {
+    dispatch(deleteContact(item.id))
+    }
     
     return (
         <div className={s.item}>

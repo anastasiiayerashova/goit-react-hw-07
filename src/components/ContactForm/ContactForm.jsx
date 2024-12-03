@@ -8,6 +8,7 @@ import { nanoid } from 'nanoid';
 
 
 import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/contactsOps';
 
 const FeedbackScheme = Yup.object().shape({
     name: Yup.string().min(3, 'Too Short!').max(50, 'Too Long!').required('Required'),
@@ -24,7 +25,16 @@ export default function ContactForm() {
     }
    
     const dispatch = useDispatch()
-
+      
+    const handleAddContact = (values, actions) => {
+        const newContact = {
+            name: values.name,
+            number: values.number,
+            id: nanoid(),
+        }
+        dispatch(addContact(newContact))
+        actions.resetForm()
+    }
     
    
     return (
