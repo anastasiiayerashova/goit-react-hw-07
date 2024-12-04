@@ -2,8 +2,6 @@ import s from './Contact.module.css';
 import { FaUser } from "react-icons/fa6";
 import { MdLocalPhone } from "react-icons/md";
 import { LuMinus } from "react-icons/lu";
-
-
 import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contactsOps';
 
@@ -25,7 +23,7 @@ export default function Contact({...item}) {
                     <MdLocalPhone />
                     <p className={s.phone}>{item.number}</p>
                 </div>
-                </div>
+            </div>
             <button className={s.btn} type='button' onClick={handleDeleteContact}>Delete<LuMinus /></button>
         </div>
     )

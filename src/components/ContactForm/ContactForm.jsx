@@ -5,8 +5,6 @@ import { useId } from 'react';
 import { FaRegAddressBook } from "react-icons/fa";
 import { MdAdd } from "react-icons/md";
 import { nanoid } from 'nanoid';
-
-
 import { useDispatch } from 'react-redux';
 import { addContact } from '../../redux/contactsOps';
 
@@ -21,7 +19,7 @@ export default function ContactForm() {
 
     const initialValues = {
         name: '',
-        number: '',
+        number: ''
     }
    
     const dispatch = useDispatch()
@@ -36,7 +34,6 @@ export default function ContactForm() {
         actions.resetForm()
     }
     
-   
     return (
         <div className={s.formDiv}>
             <h1 className={s.title}>Phonebook<FaRegAddressBook /></h1>

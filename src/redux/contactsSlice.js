@@ -48,7 +48,7 @@ const slice = createSlice({
 })
 
 export const contactsReducer = slice.reducer
-export const {selectContacts ,selectLoading, selectError} = slice.selectors
+export const {selectContacts, selectLoading, selectError} = slice.selectors
 
 export const selectFilteredContacts = createSelector([selectContacts, state => state.filters.name],
     (contacts, filter) => {
