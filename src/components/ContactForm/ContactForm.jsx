@@ -4,7 +4,6 @@ import * as Yup from "yup";
 import { useId } from 'react';
 import { FaRegAddressBook } from "react-icons/fa";
 import { MdAdd } from "react-icons/md";
-import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
 import { addContact } from '../../redux/contactsOps';
 
@@ -28,7 +27,6 @@ export default function ContactForm() {
         const newContact = {
             name: values.name,
             number: values.number,
-            id: nanoid(),
         }
         dispatch(addContact(newContact))
         actions.resetForm()
