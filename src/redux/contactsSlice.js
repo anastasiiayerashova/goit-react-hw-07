@@ -1,5 +1,6 @@
 import { createSelector, createSlice, isAnyOf } from "@reduxjs/toolkit"
 import { addContact, deleteContact, fetchContacts } from "./contactsOps"
+import toast from 'react-hot-toast';
 
 const initialState = {
     items: [],
@@ -43,6 +44,7 @@ const slice = createSlice({
             .addMatcher(isAnyOf(fetchContacts.rejected, addContact.rejected, deleteContact.rejected), (state, action) => {
                 state.loading = false
                 state.error = action.payload
+                toast.error('Oops, something went wrong...')
         })
     }
 })

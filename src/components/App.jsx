@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchContacts } from '../redux/contactsOps'
 import { selectLoading, selectError } from '../redux/contactsSlice'
 import Loader from './Loader/Loader'
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
   const dispatch = useDispatch()
@@ -20,10 +21,10 @@ export default function App() {
 
   return (
     <div className='mainWrapper'>
+      <Toaster/>
       <ContactForm />
       <SearchBox />
       {loading && !error && <Loader/>}
-      {error && <p>Something went wrong...</p>}
       <ContactList/>
    </div>
  )
