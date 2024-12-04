@@ -11,8 +11,12 @@ const slice = createSlice({
         changeFilter: (state, action) => {
         state.name = action.payload
         }
+    },
+    selectors: {
+        selectNameFilter: state => state.name
     }
 })
 
 export const filtersReducer = slice.reducer
+export const {selectNameFilter} = slice.selectors
 export const {changeFilter} = slice.actions

@@ -1,5 +1,6 @@
 import { createSelector, createSlice, isAnyOf } from "@reduxjs/toolkit"
 import { addContact, deleteContact, fetchContacts } from "./contactsOps"
+import { selectNameFilter } from "./filtersSlice";
 import toast from 'react-hot-toast';
 
 const initialState = {
@@ -38,7 +39,6 @@ const slice = createSlice({
         
             .addMatcher(isAnyOf(fetchContacts.pending, addContact.pending, deleteContact.pending), (state) => {
                 state.loading = true
-                state.error = null
             })
 
             .addMatcher(isAnyOf(fetchContacts.rejected, addContact.rejected, deleteContact.rejected), (state, action) => {
@@ -52,8 +52,8 @@ const slice = createSlice({
 export const contactsReducer = slice.reducer
 export const {selectContacts, selectLoading, selectError} = slice.selectors
 
-export const selectFilteredContacts = createSelector([selectContacts, state => state.filters.name],
+export const selectFilteredContacts = createSelector([selectContacts, selectNameFilter],
     (contacts, filter) => {
     if (!filter) return contacts
-    return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()))
+    return contacts.filter(contact => contact.name.toLowerCase().trim().includes(filter.toLowerCase().trim()))
 })
